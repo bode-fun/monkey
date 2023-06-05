@@ -10,8 +10,15 @@ const (
 	INT        = "INT"
 
 	// Operators
-	ASSIGN = "="
-	PLUS   = "+"
+	ASSIGN   = "="
+	PLUS     = "+"
+	MINUS    = "-"
+	BANG     = "!"
+	ASTERISK = "*"
+	SLASH    = "/"
+
+	LTHAN = "<"
+	GTHAN = ">"
 
 	// Delimiters
 	COMMA     = ","
@@ -34,6 +41,7 @@ type Token struct {
 	Literal string
 }
 
+// TODO: Add new keywords from 1.4
 var keywords = map[string]TokenType{
 	"fn":  FUNCTION,
 	"let": LET,
