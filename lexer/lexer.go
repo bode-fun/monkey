@@ -27,35 +27,38 @@ func (l *Lexer) NextToken() token.Token {
 	l.skipWhitespace()
 
 	switch l.char {
+	case 0:
+		tok.Literal = ""
+		tok.Type = token.EOF
 	case '=':
 		tok = newToken(token.ASSIGN, l.char)
+	case '+':
+		tok = newToken(token.PLUS, l.char)
+	case ',':
+		tok = newToken(token.COMMA, l.char)
 	case ';':
 		tok = newToken(token.SEMICOLON, l.char)
 	case '(':
 		tok = newToken(token.LPAREN, l.char)
 	case ')':
 		tok = newToken(token.RPAREN, l.char)
-	case ',':
-		tok = newToken(token.COMMA, l.char)
-	case '+':
-		tok = newToken(token.PLUS, l.char)
 	case '{':
 		tok = newToken(token.LBRACE, l.char)
 	case '}':
 		tok = newToken(token.RBRACE, l.char)
-	case 0:
-		tok.Literal = ""
-		tok.Type = token.EOF
 	default:
 		if isLetter(l.char) {
+			// Keywords and identifier
 			tok.Literal = l.readIdentifier()
 			tok.Type = token.LookupIdentifier(tok.Literal)
 			return tok
 		} else if isDigit(l.char) {
+			// Numbers
 			tok.Literal = l.readNumber()
 			tok.Type = token.INT
 			return tok
 		} else {
+			// Unknown tokens
 			tok = newToken(token.ILLEGAL, l.char)
 		}
 	}
