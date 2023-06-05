@@ -14,7 +14,7 @@ func TestNextToken(t *testing.T) {
 	input := `let five = 5;
 let ten = 10;
 
-let add = fn(x,y) {
+let add = fn(x, y) {
   x + y;
 };
 
@@ -26,39 +26,39 @@ let result = add(five, ten);
 		expectedLiteral string
 	}{
 		{token.LET, "let"},
-		{token.IDENT, "five"},
+		{token.IDENTIFIER, "five"},
 		{token.ASSIGN, "="},
 		{token.INT, "5"},
 		{token.SEMICOLON, ";"},
 		{token.LET, "let"},
-		{token.IDENT, "ten"},
+		{token.IDENTIFIER, "ten"},
 		{token.ASSIGN, "="},
 		{token.INT, "10"},
 		{token.SEMICOLON, ";"},
 		{token.LET, "let"},
-		{token.IDENT, "add"},
+		{token.IDENTIFIER, "add"},
 		{token.ASSIGN, "="},
 		{token.FUNCTION, "fn"},
 		{token.LPAREN, "("},
-		{token.IDENT, "x"},
+		{token.IDENTIFIER, "x"},
 		{token.COMMA, ","},
-		{token.IDENT, "y"},
+		{token.IDENTIFIER, "y"},
 		{token.RPAREN, ")"},
 		{token.LBRACE, "{"},
-		{token.IDENT, "x"},
+		{token.IDENTIFIER, "x"},
 		{token.PLUS, "+"},
-		{token.IDENT, "y"},
+		{token.IDENTIFIER, "y"},
 		{token.SEMICOLON, ";"},
 		{token.RBRACE, "}"},
 		{token.SEMICOLON, ";"},
 		{token.LET, "let"},
-		{token.IDENT, "result"},
+		{token.IDENTIFIER, "result"},
 		{token.ASSIGN, "="},
-		{token.IDENT, "add"},
+		{token.IDENTIFIER, "add"},
 		{token.LPAREN, "("},
-		{token.IDENT, "five"},
+		{token.IDENTIFIER, "five"},
 		{token.COMMA, ","},
-		{token.IDENT, "ten"},
+		{token.IDENTIFIER, "ten"},
 		{token.RPAREN, ")"},
 		{token.SEMICOLON, ";"},
 		{token.EOF, ""},
